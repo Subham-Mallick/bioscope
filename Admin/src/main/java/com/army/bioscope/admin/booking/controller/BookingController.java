@@ -24,7 +24,7 @@ public class BookingController {
         return ResponseEntity.status(HttpStatus.OK).body(bookingService.getAllBookings());
     }
 
-    @PostMapping("/new-Booking")
+    @PostMapping("/new-booking")
     public ResponseEntity<Booking> saveBooking(@RequestBody Booking booking) {
         return ResponseEntity.status(HttpStatus.OK).body(bookingService.saveBooking(booking));
     }
@@ -40,9 +40,10 @@ public class BookingController {
         if(existingBooking == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("ID - "+id+" not found");
         }
-//        existingBooking.setBookingDescription(Booking.getBookingDescription());
-//        existingBooking.setBookingName(Booking.getBookingName());
-//        existingBooking.setId(Booking.getId());
+        existingBooking.setId(booking.getId());
+        existingBooking.setSeats(booking.getSeats());
+        existingBooking.setShow(booking.getShow());
+        existingBooking.setUser(booking.getUser());
 
         return ResponseEntity.status(HttpStatus.OK).body(bookingService.updateBooking(existingBooking));
     }
