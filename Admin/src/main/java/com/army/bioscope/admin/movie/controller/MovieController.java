@@ -54,6 +54,7 @@ public class MovieController {
         if(existingMovie == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("ID - "+id+" not found");
         }
+        movieService.deleteMovieById(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
