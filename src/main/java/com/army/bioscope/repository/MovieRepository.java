@@ -16,14 +16,6 @@ import java.util.Optional;
  * @date: 28/11/21
  */
 @Repository
-public interface BioscopeRepository extends MongoRepository<Object,String> {
-//    Optional<Event> findEventByDateTime(LocalDateTime localDateTime);
-//    Optional<Event> findAllByEventDateTime(LocalDateTime eventDateTime);
-//    @Query("{eventDateTime:?0}")
-//    List<Event> findByEventDateTime(LocalDateTime eventDateTime);
-    List<Event> findEventsByEventDateTime(LocalDateTime eventDateTime);
-
-    List<Show> findShowsByShowDateTime(LocalDateTime showDateTime);
-
+public interface MovieRepository extends MongoRepository<Movie,String> {
     List<Movie> findAllByMovieName(String movieName);
 }
