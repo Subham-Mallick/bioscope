@@ -11,15 +11,16 @@ import java.io.Serializable;
  * @date: 28/11/21
  */
 @Data
-@Document
 public class Seat implements Serializable {
     @Id
     private String seatId;
     private int row;
     private int column;
+    private Boolean blocked;
 
     public Seat(int row, int column) {
         this.row = row;
         this.column = column;
+        this.blocked = false;
     }
 }

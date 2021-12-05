@@ -1,5 +1,6 @@
 package com.army.bioscope.repository;
 
+import com.army.bioscope.model.Movie;
 import com.army.bioscope.model.Show;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
@@ -14,4 +15,7 @@ import java.util.List;
 @Repository
 public interface ShowRepository extends MongoRepository<Show,String> {
     List<Show> findAllByShowDateTime(LocalDateTime showDateTime);
+    Show findByMovieDetails(Movie movieDeatails);
+    List<Show> findByMovieDetailsContaining(Movie movieDetails);
+
 }

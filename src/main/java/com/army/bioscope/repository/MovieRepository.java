@@ -1,15 +1,10 @@
 package com.army.bioscope.repository;
 
-import com.army.bioscope.model.Event;
 import com.army.bioscope.model.Movie;
-import com.army.bioscope.model.Show;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author subham.mallick
@@ -17,5 +12,6 @@ import java.util.Optional;
  */
 @Repository
 public interface MovieRepository extends MongoRepository<Movie,String> {
-    List<Movie> findAllByMovieName(String movieName);
+    List<Movie> findByMovieName(String movieName);
+    List<Movie> findByMovieNameContaining(String movieName);
 }

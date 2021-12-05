@@ -1,10 +1,13 @@
 package com.army.bioscope.model;
 
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author subham.mallick
@@ -12,8 +15,12 @@ import java.io.Serializable;
  */
 @Data
 @Document
+@Builder
 public class Auditorium implements Serializable {
     @Id
-    private String auditoriumId;
-    private String auditoriumName;
+    private String audiId;
+    @Indexed(unique = true)
+    private String audiName;
+    private List<Seat> permanentSeats;
+    private List<Show> shows;
 }
