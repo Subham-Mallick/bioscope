@@ -22,7 +22,7 @@ import java.util.Optional;
 public class ShowController {
     private final ShowService showService;
 
-    @PostMapping("/shows/new")
+    @PostMapping("/shows")
     public ResponseEntity<Show> createShow(@RequestBody Show show){
         try {
             if (showService.findByMovieDetails(show.getMovieDetails()) != null) {

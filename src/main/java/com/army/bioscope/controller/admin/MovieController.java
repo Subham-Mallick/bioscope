@@ -23,7 +23,7 @@ public class MovieController {
 
     private final MovieService movieService;
 
-    @PostMapping("/movies/new")
+    @PostMapping("/movies")
     public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie){
         try {
             if (movieService.findByMovieName(newMovie.getMovieName()) != null) {
