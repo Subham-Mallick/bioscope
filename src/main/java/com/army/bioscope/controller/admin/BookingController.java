@@ -24,7 +24,7 @@ public class BookingController {
 
     private final BookingService bookingService;
 
-    @PostMapping("/bookings/new")
+    @PostMapping("/bookings")
     public ResponseEntity<Booking> createBooking(@RequestBody Booking newBooking){
         try {
             if (bookingService.findByBookedUserArmyNumber(newBooking.getBookedUserArmyNumber()) != null) {
