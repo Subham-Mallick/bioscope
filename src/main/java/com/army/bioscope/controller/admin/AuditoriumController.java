@@ -1,7 +1,6 @@
 package com.army.bioscope.controller.admin;
 
 import com.army.bioscope.model.Auditorium;
-import com.army.bioscope.repository.AuditoriumRepository;
 import com.army.bioscope.service.AuditoriumService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +15,7 @@ import java.util.Optional;
  * @author subham.mallick
  * @date: 28/11/21
  */
-@RestController
+@RestController("AdminAuditoriumController")
 @RequestMapping("/admin")
 @RequiredArgsConstructor
 public class AuditoriumController {

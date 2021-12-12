@@ -39,4 +39,8 @@ public class AuditoriumService {
     public void deleteById(String audiId){
         auditoriumRepository.deleteById(audiId);
     }
+
+    public Auditorium findByAudiId(String audiId){
+        return auditoriumRepository.findByAudiId(audiId);
+    }
 }

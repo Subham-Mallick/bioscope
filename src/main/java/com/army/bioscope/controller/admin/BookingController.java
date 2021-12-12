@@ -1,40 +1,32 @@
 package com.army.bioscope.controller.admin;
 
 import com.army.bioscope.model.Booking;
-import com.army.bioscope.repository.BookingRepository;
 import com.army.bioscope.service.BookingService;
+import com.army.bioscope.service.ShowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+
+import static com.army.bioscope.controller.util.Util.getBookingResponseEntity;
 
 /**
  * @author subham.mallick
  * @date: 04/12/21
  */
 
-@RestController
+@RestController("AdminBookingController")
 @RequestMapping("/admin")
 @RequiredArgsConstructor
 public class BookingController {
-
+    private final ShowService showService;
     private final BookingService bookingService;
 
-    @PostMapping("/bookings/new")
-    public ResponseEntity<Booking> createBooking(@RequestBody Booking newBooking){
-        try {
-            if (bookingService.findByBookedUserArmyNumber(newBooking.getBookedUserArmyNumber()) != null) {
-                return new ResponseEntity<>(null, HttpStatus.CONFLICT);
-            }
-            final Booking booking = bookingService.save(new Booking(newBooking.getBookedUserName(), newBooking.getBookedUserArmyNumber(), newBooking.getBookedSeats()));
-            return new ResponseEntity<>(booking,HttpStatus.CREATED);
-        }catch (Exception e){
-            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    @PostMapping("/{showId}/bookings")
+    public ResponseEntity<Booking> createBooking(@RequestBody Booking newBooking, @PathVariable String showId){
+        return getBookingResponseEntity(newBooking, showId, showService, bookingService);
     }
 
     @GetMapping("/bookings/{bookingId}")
@@ -83,7 +75,7 @@ public class BookingController {
     public ResponseEntity<Booking> deleteBooking(@PathVariable String bookingId){
         try{
             bookingService.deleteById(bookingId);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
