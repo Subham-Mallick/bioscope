@@ -1,8 +1,6 @@
 package com.army.bioscope.controller.admin;
 
 import com.army.bioscope.model.Movie;
-import com.army.bioscope.model.Show;
-import com.army.bioscope.repository.MovieRepository;
 import com.army.bioscope.service.MovieService;
 import com.army.bioscope.service.ShowService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +16,7 @@ import java.util.Optional;
  * @author subham.mallick
  * @date: 04/12/21
  */
-@RestController
+@RestController("AdminMovieController")
 @RequestMapping("/admin")
 @RequiredArgsConstructor
 public class MovieController {

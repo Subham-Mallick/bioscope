@@ -15,7 +15,7 @@ import java.util.List;
 @Repository
 public interface ShowRepository extends MongoRepository<Show,String> {
     List<Show> findAllByShowDateTime(LocalDateTime showDateTime);
-    Show findByMovieDetails(Movie movieDeatails);
+    Show findByMovieDetails(Movie movieDetails);
     List<Show> findByMovieDetailsContaining(Movie movieDetails);
 
 }

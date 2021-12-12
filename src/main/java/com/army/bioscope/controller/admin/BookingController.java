@@ -17,7 +17,7 @@ import static com.army.bioscope.controller.util.Util.getBookingResponseEntity;
  * @date: 04/12/21
  */
 
-@RestController
+@RestController("AdminBookingController")
 @RequestMapping("/admin")
 @RequiredArgsConstructor
 public class BookingController {

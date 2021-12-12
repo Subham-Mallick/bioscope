@@ -5,10 +5,7 @@ import com.army.bioscope.service.BookingService;
 import com.army.bioscope.service.ShowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static com.army.bioscope.controller.util.Util.getBookingResponseEntity;
 
@@ -18,8 +15,9 @@ import static com.army.bioscope.controller.util.Util.getBookingResponseEntity;
  * @date: 28/11/21
  */
 
-@RestController
+@RestController("ClientBookingController")
 @RequiredArgsConstructor
+@RequestMapping("/client")
 public class BookingController {
 
     private final ShowService showService;

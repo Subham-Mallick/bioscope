@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +19,8 @@ import static com.army.bioscope.controller.util.Util.getShowsResponseEntity;
  * @author subham.mallick
  * @date: 04/12/21
  */
-@RestController
+
+@RestController("AdminShowController")
 @RequestMapping("/admin")
 @RequiredArgsConstructor
 public class ShowController {
