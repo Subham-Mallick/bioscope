@@ -26,6 +26,7 @@ public class BioscopeApplication {
         SpringApplication.run(BioscopeApplication.class, args);
     }
 
+/*
     @Bean
     CommandLineRunner runner(AuditoriumRepository auditoriumRepository, BookingRepository bookingRepository, MovieRepository movieRepository, ShowRepository showRepository, MongoTemplate mongoTemplate){
 
@@ -109,5 +110,5 @@ public class BioscopeApplication {
         };
 
     }
-
+*/
 }
