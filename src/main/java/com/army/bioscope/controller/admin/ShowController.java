@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static com.army.bioscope.controller.util.Util.getShowsResponseEntity;
+
 /**
  * @author subham.mallick
  * @date: 04/12/21
@@ -62,22 +64,7 @@ public class ShowController {
 
     @GetMapping("/shows")
     public ResponseEntity<List<Show>> getAllShows(@RequestParam(required = false) Movie movieDetails){
-        try{
-            List<Show> shows = new ArrayList<>();
-            if(movieDetails==null){
-                shows.addAll(showService.findAll());
-            } else {
-                shows.addAll(showService.findByMovieDetailsContaining(movieDetails));
-            }
-
-            if (shows.isEmpty()){
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-
-            return new ResponseEntity<>(shows,HttpStatus.OK);
-        } catch (Exception e){
-            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        return getShowsResponseEntity(movieDetails, showService);
     }
 
     @PutMapping("/shows/{showId}")
