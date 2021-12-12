@@ -1,7 +1,9 @@
 package com.army.bioscope.controller.admin;
 
+import com.army.bioscope.model.Auditorium;
 import com.army.bioscope.model.Movie;
 import com.army.bioscope.model.Show;
+import com.army.bioscope.service.AuditoriumService;
 import com.army.bioscope.service.ShowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,14 +23,30 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ShowController {
     private final ShowService showService;
+    private final AuditoriumService auditoriumService;
 
-    @PostMapping("/shows")
-    public ResponseEntity<Show> createShow(@RequestBody Show show){
+    @PostMapping("/{audId}/shows")
+    public ResponseEntity<Show> createShow(@RequestBody Show newShow, @PathVariable String audId){
         try {
-            if (showService.findByMovieDetails(show.getMovieDetails()) != null) {
-                return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+            // if a show is present in same Audi with same date time, don't create it
+            final Auditorium byAudiId = auditoriumService.findByAudiId(audId);
+            final List<Show> shows = byAudiId.getShows();
+            for (Show value : shows) {
+                if (value.getShowDateTime() == newShow.getShowDateTime()) {
+                    return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+                }
             }
-            return new ResponseEntity<>(showService.save(new Show(show.getShowDateTime(), show.getMovieDetails(),null)),HttpStatus.CREATED);
+
+            // Add new show details to auditorium
+            Show show = new Show(newShow.getShowDateTime(), newShow.getMovieDetails(), byAudiId.getPermanentSeats());
+            byAudiId.getShows().add(show);
+
+            // save to repositories
+            showService.save(show);
+            auditoriumService.save(byAudiId);
+
+            return new ResponseEntity<>(show,HttpStatus.CREATED);
+
         }catch (Exception e){
             return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -38,7 +56,8 @@ public class ShowController {
     public ResponseEntity<Show> getShowById(@PathVariable String showId){
         Optional<Show> foundShow = showService.findById(showId);
 
-        return foundShow.map(show -> new ResponseEntity<>(show, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        return foundShow.map(show -> new ResponseEntity<>(show, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/shows")
