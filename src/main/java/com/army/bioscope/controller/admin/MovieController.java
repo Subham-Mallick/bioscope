@@ -1,8 +1,10 @@
 package com.army.bioscope.controller.admin;
 
 import com.army.bioscope.model.Movie;
+import com.army.bioscope.model.Show;
 import com.army.bioscope.repository.MovieRepository;
 import com.army.bioscope.service.MovieService;
+import com.army.bioscope.service.ShowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,7 @@ import java.util.Optional;
 public class MovieController {
 
     private final MovieService movieService;
+    private final ShowService showService;
 
     @PostMapping("/movies")
     public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie){
@@ -85,8 +88,12 @@ public class MovieController {
     @DeleteMapping("/movies/{movieId}")
     public ResponseEntity<Movie> deleteMovie(@PathVariable String movieId){
         try{
+            // if a movie is attached with a show, don't delete
+            if( showService.findByMovieDetails(movieService.findById(movieId).get()) != null){
+                return new ResponseEntity<>(HttpStatus.CONFLICT);
+            }
             movieService.deleteById(movieId);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
