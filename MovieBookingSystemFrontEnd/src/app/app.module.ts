@@ -24,6 +24,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 //Admin
 
@@ -77,7 +78,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule, ReactiveFormsModule,
     MatProgressBarModule,
     MatDialogModule, 
-    MatTableModule
+    MatTableModule,
+    MatSnackBarModule
   ],
   exports: [
     MatDatepickerModule,
@@ -86,4 +88,5 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [MatFormFieldModule,MatDatepickerModule],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

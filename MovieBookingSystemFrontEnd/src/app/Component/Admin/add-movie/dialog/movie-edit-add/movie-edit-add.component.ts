@@ -15,6 +15,9 @@ export class MovieEditAddComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) { }
   
   ngOnInit(): void {
+    console.log(this.data.movieDetails)
+    this.movieName = this.data.movieDetails.movieName;
+    this.movieDescription = this.data.movieDetails.movieDescription;
   }
 
   saveMovieData() {
@@ -28,6 +31,10 @@ export class MovieEditAddComponent implements OnInit {
     if(this.data.mode == 'Add') movieDetails.movieId = this.generateGuid();
     this.dialogRef.close(movieDetails)
 
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
   }
 
   assignIdToMovie() {

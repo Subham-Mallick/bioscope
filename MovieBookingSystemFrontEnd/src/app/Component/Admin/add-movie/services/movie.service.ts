@@ -14,11 +14,11 @@ export class MovieService {
   }
 
   updatemovie(moviePayLoad: any) {
-    return this.httpClient.put(environment.api_url + environment.movies + moviePayLoad.id, moviePayLoad);
+    return this.httpClient.put(environment.api_url + environment.movies + moviePayLoad.movieId, moviePayLoad);
   }
 
   deletemovie(moviePayLoad: any) {
-    return this.httpClient.delete(environment.api_url + environment.movies + moviePayLoad.id);
+    return this.httpClient.delete(environment.api_url + environment.movies + moviePayLoad.movieId);
   }
 
   getAllmovies() {
@@ -26,7 +26,7 @@ export class MovieService {
   }
 
   getmovieById(moviePayLoad: any) {
-    return this.httpClient.get(environment.api_url + environment.movies + moviePayLoad.id);
+    return this.httpClient.get(environment.api_url + environment.movies + moviePayLoad.movieId);
   }
 
 }
