@@ -1,0 +1,31 @@
+
+<div class="container">
+    <div class="example-flex-container">
+        <button mat-fab color="warn" (click)="openDialog('Add')" aria-label="Example icon button with a heart icon">
+          <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+</div>
+
+
+<div class="container">
+    <mat-card class="example-card">
+        <mat-card-title  align="center">Shiba Inu</mat-card-title>
+        <mat-card-content align="center">
+          <p>This card indeterminates progress bar.</p>
+          
+        </mat-card-content>
+        <mat-card-actions align="start">
+            <button mat-raised-button color="warn" >Delete</button>
+            <button mat-raised-button color="accent"> Booking Details</button>
+            <button mat-raised-button color="primary" (click)="openDialog('Edit')">Edit</button>
+        </mat-card-actions>
+      </mat-card>
+      
+</div>
+
+<div class="guest-details">
+  <app-show-guest-list></app-show-guest-list>
+
+</div>

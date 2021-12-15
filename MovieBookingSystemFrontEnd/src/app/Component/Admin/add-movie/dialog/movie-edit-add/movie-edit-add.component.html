@@ -1,0 +1,21 @@
+<mat-card class="example-card">
+    <mat-card-title align="center"> {{ data.mode }} Movie Details</mat-card-title>
+    <mat-card-content>
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Movie Name</mat-label>
+            <input matInput [(ngModel)]="movieName">
+          </mat-form-field>
+        
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Please add the details of the Movie" [(ngModel)]="movieDescription"></textarea>
+          </mat-form-field>
+
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+    <mat-card-actions align="end">
+        <button mat-raised-button color="accent">Cancel</button>
+        <button mat-raised-button color="primary" (click)="saveMovieData()">Save</button>
+    </mat-card-actions>
+
+  </mat-card>

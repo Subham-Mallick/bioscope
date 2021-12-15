@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      
+      <h1>Admin Dashboard </h1>
+      <span class="menu-spacer"></span>
+      <div>
+        <a  mat-button  [routerLink]="'/admin/movies'"> Movies </a>
+       
+        <a mat-button [routerLink]="'/admin/showdetails'"> Show Details </a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+<div class="container">
+   
+<router-outlet></router-outlet>
+
+</div>
+
