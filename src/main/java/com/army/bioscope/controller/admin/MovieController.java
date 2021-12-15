@@ -27,7 +27,7 @@ public class MovieController {
     @PostMapping("/movies")
     public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie){
         try {
-            if (movieService.findByMovieName(newMovie.getMovieName()) != null) {
+            if (movieService.findByMovieName(newMovie.getMovieName()).size() != 0) {
                 return new ResponseEntity<>(null, HttpStatus.CONFLICT);
             }
             final Movie movie = movieService.save(
