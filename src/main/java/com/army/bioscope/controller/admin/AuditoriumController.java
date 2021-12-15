@@ -18,6 +18,7 @@ import java.util.Optional;
 @RestController("AdminAuditoriumController")
 @RequestMapping("/admin")
 @RequiredArgsConstructor
+@CrossOrigin
 public class AuditoriumController {
 
     private final AuditoriumService auditoriumService;

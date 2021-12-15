@@ -20,6 +20,7 @@ import static com.army.bioscope.controller.util.Util.getBookingResponseEntity;
 @RestController("AdminBookingController")
 @RequestMapping("/admin")
 @RequiredArgsConstructor
+@CrossOrigin
 public class BookingController {
     private final ShowService showService;
     private final BookingService bookingService;

@@ -19,6 +19,7 @@ import java.util.Optional;
 @RestController("AdminMovieController")
 @RequestMapping("/admin")
 @RequiredArgsConstructor
+@CrossOrigin
 public class MovieController {
 
     private final MovieService movieService;

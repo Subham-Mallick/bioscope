@@ -23,6 +23,7 @@ import static com.army.bioscope.controller.util.Util.getShowsResponseEntity;
 @RestController("AdminShowController")
 @RequestMapping("/admin")
 @RequiredArgsConstructor
+@CrossOrigin
 public class ShowController {
     private final ShowService showService;
     private final AuditoriumService auditoriumService;
