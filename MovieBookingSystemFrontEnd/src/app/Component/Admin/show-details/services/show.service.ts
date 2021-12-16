@@ -14,7 +14,7 @@ export class ShowService {
   }
 
   updateShow(showPayLoad: any) {
-    return this.httpClient.put(environment.api_url + environment.shows + showPayLoad.id, showPayLoad);
+    return this.httpClient.put(environment.api_url + environment.shows + showPayLoad.showId, showPayLoad);
   }
 
   deleteShow(showPayLoad: any) {

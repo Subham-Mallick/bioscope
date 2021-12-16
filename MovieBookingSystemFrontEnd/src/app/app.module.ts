@@ -41,6 +41,8 @@ import { AddEditShowComponent } from './Component/Admin/show-details/Dialog/add-
 import { ShowGuestListComponent } from './Component/Admin/show-guest-list/show-guest-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,7 +81,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatProgressBarModule,
     MatDialogModule, 
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatAutocompleteModule,
+    MatFormFieldModule
   ],
   exports: [
     MatDatepickerModule,

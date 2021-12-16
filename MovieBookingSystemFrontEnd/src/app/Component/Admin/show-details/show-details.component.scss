@@ -8,6 +8,16 @@
     margin: auto;
     margin-top: 2rem;
     
+    background: linear-gradient(#ede4ea, #f3e3f1);
+}
+
+.mat-card>.mat-card-actions:last-child {
+  margin-bottom: -8px;
+  display: flex;
+  padding-bottom: 0;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 table {
@@ -29,6 +39,11 @@ table {
     width: 100%;
   }
   
+  .guest-details{
+    margin-left: 10rem;
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+  }
   .container { 
     display: flex;
     width: 100vw;

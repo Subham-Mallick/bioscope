@@ -40,6 +40,7 @@ export class ShowDetailsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result != undefined) {
+        console.log(result)
         if(mode == 'Add')  this.addShow(result);
         else this.updateShow(result, index);
       }
@@ -87,7 +88,5 @@ export class ShowDetailsComponent implements OnInit {
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, { duration: 3000 });
   }
-
-  
 
 }
