@@ -18,6 +18,7 @@ import static com.army.bioscope.controller.util.Util.getBookingResponseEntity;
 @RestController("ClientBookingController")
 @RequiredArgsConstructor
 @RequestMapping("/client")
+@CrossOrigin
 public class BookingController {
 
     private final ShowService showService;

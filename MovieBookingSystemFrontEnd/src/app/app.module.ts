@@ -43,6 +43,8 @@ import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { AdminToolbaarComponent } from './Component/Admin/admin-toolbaar/admin-toolbaar.component';
+import { ShowDetailsClientComponent } from './Component/Clients/show-details-client/show-details-client.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     ShowDetailsComponent,
     AddEditShowComponent,
     ShowGuestListComponent,
+    AdminToolbaarComponent,
+    ShowDetailsClientComponent
   ],
   imports: [
     BrowserModule,

@@ -3,10 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddMovieComponent } from "./Component/Admin/add-movie/add-movie.component"
 import { AdminDashboardComponent } from "./Component/Admin/admin-dashboard/admin-dashboard.component"
 import { ShowDetailsComponent } from './Component/Admin/show-details/show-details.component';
+import { LandingPageComponent } from './Component/Clients/landing-page/landing-page.component';
+import { UserDetailsAddingComponent } from './Component/Clients/user-details-adding/user-details-adding.component';
 
 const routes: Routes = [
-  { path: 'admin/movies' , component: AddMovieComponent }, 
-  { path: 'admin/showdetails', component: ShowDetailsComponent}
+  { path : '', component: LandingPageComponent, pathMatch: 'full'},
+  { path : 'client/userdetails', component: UserDetailsAddingComponent, pathMatch: 'full'},
+  { path: 'admin/movies' , component: AddMovieComponent, pathMatch: 'full' }, 
+  { path: 'admin/showdetails', component: ShowDetailsComponent, pathMatch: 'full'}
 ];
 
 @NgModule({

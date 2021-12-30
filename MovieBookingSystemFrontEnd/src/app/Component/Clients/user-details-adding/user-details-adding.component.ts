@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { BookingDetailsService } from '../Service/booking-details.service';
 
 @Component({
   selector: 'app-user-details-adding',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDetailsAddingComponent implements OnInit {
 
-  constructor() {
+  name = new FormControl('');
+  armyNo = new FormControl('');
+  phno = new FormControl('', )
+  constructor( private bookingService: BookingDetailsService) {
     this.minDate = this.getMonday(new Date());
     this.maxDate = this.getSunday(new Date());
    }
@@ -37,6 +42,11 @@ export class UserDetailsAddingComponent implements OnInit {
     var day = d.getDay(),
         diff = d.getDate() - day + (day == 0 ? -6:1)-2; // adjust when day is sunday
     return new Date(d.setDate(diff));
+  }
+
+  saveUserDetails() {
+    console.log('Save User Details')
+    this.bookingService.updateUserDetails({})
   }
 
 
