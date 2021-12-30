@@ -41,7 +41,7 @@ public class ShowController {
             }
 
             // Add new show details to auditorium
-            Show show = new Show(newShow.getShowDateTime(), newShow.getMovieDetails(), byAudiId.getPermanentSeats());
+            Show show = new Show(newShow.getShowDateTime(), newShow.getMovieDetails(), byAudiId.getPermanentSeats(), newShow.getBookingAvailable());
             byAudiId.getShows().add(show);
 
             // save to repositories

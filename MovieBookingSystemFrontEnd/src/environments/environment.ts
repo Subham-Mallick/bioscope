@@ -5,8 +5,11 @@
 export const environment = {
   production: false,
   api_url: 'http://localhost:8999/bioscope/',
-  shows: 'admin/shows/',
-  movies: 'admin/movies/',
+  user_admin: 'admin/',
+  user_client: 'client',
+  shows: 'shows/',
+  movies: 'movies/',
+  AudiId: '61b9fbe08fd5e57a08e19d79'
 };
 
 

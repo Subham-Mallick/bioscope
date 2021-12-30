@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {  MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { MovieService } from '../../../add-movie/services/movie.service';
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-edit-show',
@@ -11,38 +12,89 @@ import { MovieService } from '../../../add-movie/services/movie.service';
 })
 export class AddEditShowComponent implements OnInit {
 
-  showDetails: FormGroup;
-  movies: any[] = []
-  filteredOptions: Observable<any[]>;
-
+  movieName = new FormControl('');
+  dateTime = new FormControl();
+  movies = []
+  options : any[] = []
+  filteredOptions: Observable<string[]>;
+  showDetails:any = {}
+  bookingAvailable = new FormControl(false);
   constructor(private formBuilder: FormBuilder, public dialogRef: MatDialogRef<AddEditShowComponent>,
     private movieService: MovieService,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-        this.showDetails = new FormGroup({
-          showId: new FormControl(data.showDetails.showId),
-          movieDetails: new FormControl(data.showDetails.movieDetails),
-          showDateTime: new FormControl(data.showDetails.showDateTime),
-          bookingAvailable: new FormControl(data.showDetails.bookingAvailable),
-          bookings: new FormControl(data.showDetails.bookings),
-          availableSeats: new FormControl(data.showDetails.availableSeats)
-        })
-
-        this.filteredOptions = new Observable()
+      this.filteredOptions = new Observable();
+      this.movieService.getAllmovies().subscribe((response: any) => {
+        this.movies = response
+        this.options = this.mapToOptions();
+        this.filteredOptions = this.movieName.valueChanges.pipe(
+          startWith(''),
+          map(value => this._filter(value)),
+        );
+      })
+      
     }
 
   ngOnInit(): void {
-    console.log(this.showDetails.value)
-    this.movieService.getAllmovies().subscribe((response: any) => {
-      this.movies = response
-    })
+    
 
+    this.fetchShowDetails()
+
+  }
+
+
+
+
+  fetchShowDetails() {
+    var mode = this.data.mode;
+    console.log(this.data)
+
+    if(mode == 'Add') return;
+    this.movieName.setValue(this.data.showDetails.movieDetails.movieName);
+    this.dateTime.setValue(this.data.showDetails.showDateTime);
+    this.bookingAvailable.setValue(this.data.showDetails.bookingAvailable)
+  }
+ 
+  addMovieObject() {
+    var x = this.movies.findIndex((x: any) => x.movieName === this.movieName.value);
+    console.log(x);
+    return x;
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  mapToOptions() {
+    var option = this.movies.map((movie:any) => movie.movieName);
+    return option; 
   }
 
   saveShowDetails() {
-    if(this.showDetails.pristine == true) this.closeDialog();
-    this.dialogRef.close(this.showDetails.value);
+    // this.dialogRef.close(this.showDetails);
+    if(this.isValidSubmission() == false) this.closeDialog();
+    
+    console.log(this.bookingAvailable.value)
+    this.showDetails = {
+      showId: this.data.mode == 'Add' ? this.generateGuid() : this.data.showDetails.showId,
+      bookings: this.data.showDetails === undefined ? null : this.data.showDetails.bookings,
+      availableSeats: this.data.showDetails === undefined ? null : this.data.showDetails.availableSeats,
+      showDateTime: this.dateTime.value,
+      bookingAvailable: this.bookingAvailable.value,
+      movieDetails: this.movies[this.addMovieObject()]
+    }
+
+    console.log('Save Details =' , this.showDetails)
+    this.dialogRef.close(this.showDetails)
   }
 
+  isValidSubmission() :boolean {
+    if(this.movieName.pristine && this.dateTime.pristine && this.bookingAvailable.pristine) return false;
+    else if(this.movieName.value == '' ) return false
+    return true;
+
+  }
   closeDialog() {
     this.dialogRef.close();
   }

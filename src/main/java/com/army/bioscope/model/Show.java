@@ -24,10 +24,10 @@ public class Show implements Serializable {
     private Boolean bookingAvailable;
     private Movie movieDetails;
 
-    public Show(LocalDateTime showDateTime, Movie movieDetails, List<Seat> availableSeats) {
+    public Show(LocalDateTime showDateTime, Movie movieDetails, List<Seat> availableSeats, Boolean bookingAvailable) {
         this.showDateTime = showDateTime;
-        this.bookingAvailable = true;
         this.movieDetails = movieDetails;
         this.availableSeats = availableSeats;
+        this.bookingAvailable = bookingAvailable;
     }
 }

@@ -42,6 +42,7 @@ import { ShowGuestListComponent } from './Component/Admin/show-guest-list/show-g
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatTableModule,
     MatSnackBarModule,
     MatAutocompleteModule,
-    MatFormFieldModule
+    MatFormFieldModule, MatSlideToggleModule
   ],
   exports: [
     MatDatepickerModule,

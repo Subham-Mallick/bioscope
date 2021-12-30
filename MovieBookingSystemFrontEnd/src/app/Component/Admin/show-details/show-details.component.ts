@@ -12,6 +12,7 @@ import { ShowService } from './services/show.service';
 export class ShowDetailsComponent implements OnInit {
 
   public shows: any[] = []
+  private AllShows : any [] = []
   constructor(public dialog: MatDialog, private showService: ShowService, private _snackBar: MatSnackBar) {
 
   }
@@ -21,12 +22,16 @@ export class ShowDetailsComponent implements OnInit {
   }
 
   modifyShowDate() {
-    this.shows = this.shows.map(show => {
+
+    this.shows = this.AllShows.map(show => {
       var date = new Date(show.showDateTime)
+      var month = date.getMonth() + 1;
+      var minutes = date.getMinutes();
+      var hours = date.getHours();
       return {
         ...show,
-        showDate : `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`,
-        showTime : `${date.getHours() }:${date.getMinutes()}`
+        showDate : `${date.getDate() > 9 ? date.getDate() : '0'+date.getDate()}/${ month > 9 ? month : '0' + month}/${date.getFullYear()}`,
+        showTime : `${hours > 9 ? hours: '0'+hours }:${minutes > 9 ? minutes : '0'+minutes}`
       }
     })
   }
@@ -34,7 +39,7 @@ export class ShowDetailsComponent implements OnInit {
     const dialogRef = this.dialog.open(AddEditShowComponent, {
       data: {
         mode: mode,
-        showDetails
+        showDetails: this.AllShows[index]
       },
     });
 
@@ -49,8 +54,9 @@ export class ShowDetailsComponent implements OnInit {
 
   addShow(show: any) {
     this.showService.addNewShow(show).subscribe(response => {
-      this.shows.push(show);
-      this.openSnackBar("New Show Created", "Success")
+      console.log(show)
+      this.openSnackBar("New Show Created", "Success");
+      this.getAllShows();
     }, error=>{
       this.openSnackBar("Unable to Create the Show", "Failed");
     })
@@ -58,7 +64,7 @@ export class ShowDetailsComponent implements OnInit {
 
   updateShow(show: any, index: number) {
     this.showService.updateShow(show).subscribe(response=> {
-      this.shows[index] = show;
+      this.getAllShows();
       this.openSnackBar("Show Updated", "Success");
     }, (error) => {
       this.openSnackBar("Failed to Update the Show", "Failed")
@@ -66,10 +72,10 @@ export class ShowDetailsComponent implements OnInit {
   }
 
   getAllShows() {
-    this.shows = []
+    this.AllShows = []
     this.showService.getAllShows().subscribe((response: any) => {
       console.log(response)
-      this.shows = response;
+      this.AllShows = response;
       this.modifyShowDate()
     })
   }
@@ -77,6 +83,7 @@ export class ShowDetailsComponent implements OnInit {
   deleteShow(show: any) {
     this.showService.deleteShow(show).subscribe(response => {
       this.openSnackBar("Show Deleted", "Success")
+      this.getAllShows()
     }, error => {
       this.openSnackBar("Unable to Delete Show", "Failed")
     })

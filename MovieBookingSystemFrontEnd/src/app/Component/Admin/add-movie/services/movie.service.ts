@@ -10,23 +10,23 @@ export class MovieService {
   constructor(private httpClient: HttpClient) { }
 
   addNewmovie(moviePayLoad: any) {
-    return this.httpClient.post(environment.api_url + environment.movies, moviePayLoad);
+    return this.httpClient.post(environment.api_url + environment.user_admin + environment.movies, moviePayLoad);
   }
 
   updatemovie(moviePayLoad: any) {
-    return this.httpClient.put(environment.api_url + environment.movies + moviePayLoad.movieId, moviePayLoad);
+    return this.httpClient.put(environment.api_url + environment.user_admin + environment.movies + moviePayLoad.movieId, moviePayLoad);
   }
 
   deletemovie(moviePayLoad: any) {
-    return this.httpClient.delete(environment.api_url + environment.movies + moviePayLoad.movieId);
+    return this.httpClient.delete(environment.api_url + environment.user_admin  + environment.movies + moviePayLoad.movieId);
   }
 
   getAllmovies() {
-    return this.httpClient.get(environment.api_url + environment.movies);
+    return this.httpClient.get(environment.api_url + environment.user_admin + environment.movies);
   }
 
   getmovieById(moviePayLoad: any) {
-    return this.httpClient.get(environment.api_url + environment.movies + moviePayLoad.movieId);
+    return this.httpClient.get(environment.api_url + environment.user_admin + environment.movies + moviePayLoad.movieId);
   }
 
 }
