@@ -1,0 +1,67 @@
+.mat-card {
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    position: relative;
+    padding: 16px;
+    border-radius: 4px;
+    width: 20rem;
+    margin: auto;
+    margin-top: 2rem;
+    
+    background: linear-gradient(#ede4ea, #f3e3f1);
+}
+
+.mat-card>.mat-card-actions:last-child {
+  margin-bottom: -8px;
+  display: flex;
+  padding-bottom: 0;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+table {
+  width: 100%;
+  .show__heading {
+    font-weight: 900;
+    display: flex;
+
+  }
+  
+}
+
+
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .guest-details{
+    margin-left: 10rem;
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+  }
+  .container { 
+    display: flex;
+    /* align-items: center; */
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 2rem;
+  }
+
+  .mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+    background-color: #000000;
+}
+
