@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookingDetailsService } from '../Service/booking-details.service';
 
 @Component({
@@ -11,8 +13,10 @@ export class UserDetailsAddingComponent implements OnInit {
 
   name = new FormControl('');
   armyNo = new FormControl('');
-  phno = new FormControl('', )
-  constructor( private bookingService: BookingDetailsService) {
+  seats = new FormControl(1);
+  constructor( private bookingService: BookingDetailsService,
+    private activateRoute: ActivatedRoute, private _snackBar: MatSnackBar,
+    private router: Router) {
     this.minDate = this.getMonday(new Date());
     this.maxDate = this.getSunday(new Date());
    }
@@ -45,8 +49,33 @@ export class UserDetailsAddingComponent implements OnInit {
   }
 
   saveUserDetails() {
+
+    if(this.isInvalidSubmission()) {
+      this.openSnackBar();
+      return;
+    }
     console.log('Save User Details')
-    this.bookingService.updateUserDetails({})
+    let userDetails = {
+      bookedUserName: this.name.value,
+      bookedUserArmyNumber: this.armyNo.value,
+      showId: this.activateRoute.snapshot.paramMap.get("showId"),
+      seats: this.seats.value
+    }
+
+    console.log(userDetails)
+    this.bookingService.updateBookingDetails(userDetails)
+    this.router.navigateByUrl("client/theaterSeat")
+  }
+
+  isInvalidSubmission() {
+    if(this.name.value === '' || this.armyNo.value === true) return true;
+    return false;
+  }
+
+  openSnackBar() {
+    this._snackBar.open("Please Enter Valid Details", '', {
+      duration: 3000,
+    });
   }
 
 

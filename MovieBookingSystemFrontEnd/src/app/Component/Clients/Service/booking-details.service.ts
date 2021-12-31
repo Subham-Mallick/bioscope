@@ -1,21 +1,17 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookingDetailsService {
 
-  BookingDetails : any = {
-    ShowDetails : {}, 
-    UserDetails: {}
-  }
+  BookingDetails : BehaviorSubject<any> = new BehaviorSubject(null)
   constructor() { }
 
-  updateShowDetails(show: any) {
-    this.BookingDetails.ShowDetails = show;
-  }
-  updateUserDetails(user: any) {
-    this.BookingDetails.UserDetails = user;
+  
+  updateBookingDetails(user: any) {
+    this.BookingDetails.next(user);
   }
 
   getBookingDetails() {

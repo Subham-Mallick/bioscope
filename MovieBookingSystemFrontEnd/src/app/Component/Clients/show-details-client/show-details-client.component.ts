@@ -45,8 +45,7 @@ export class ShowDetailsClientComponent implements OnInit {
   bookShow(show : any, i : number) {
     console.log(show)
     console.log(this.AllShows[i])
-    this.bookingService.updateShowDetails(show)
-    this.router.navigateByUrl('/client/userdetails')
+    this.router.navigateByUrl(`/client/userdetails/${show.showId}`)
 
   }
 

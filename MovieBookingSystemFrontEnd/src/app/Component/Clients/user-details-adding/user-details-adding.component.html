@@ -15,23 +15,17 @@
           <button class='b b-form i i-more' title='Mais Informações'></button>
           <p class='field'>
             <label for='user'>Name</label>
-            <input type='text' id='user' name='user' title='Username' />
+            <input type='text' [formControl]="name" id='user' name='user' title='Username' />
             <span id='valida' class='i i-warning'></span>
           </p>
           <p class='field'>
             <label for='armyno'>Army Number</label>
-            <input type='text' id='armyno' name='armyno' title='Password' />
-            <span id='valida' class='i i-close'></span>
-          </p>
-  
-          <p class='field'>
-            <label for='phno'>Phone Number</label>
-            <input type='text' id='phno' name='phno' title='Password' />
+            <input type='text' [formControl]="armyNo" id='armyno' name='armyno' title='Password' />
             <span id='valida' class='i i-close'></span>
           </p>
           <p class='field_seat'>
             <label for='seats'> Seats</label>
-            <input class="seat_numbers" type='number' id='seats' name='seats' title='Password' max = "5" min = "1"  value = "1" />
+            <input class="seat_numbers" [formControl]="seats" type='number' id='seats' name='seats' title='Password' max = "5" min = "1"  value = "1" />
            
           </p>
         

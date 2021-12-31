@@ -1,11 +1,4 @@
 <div class="movie-container">
-    <label>Pick a movie: </label>
-    <select id="movie">
-      <option value="250">Interstellar (Rs. 250)</option>
-      <option value="200">Kabir Singh (Rs. 200)</option>
-      <option value="150">Duniyadari (Rs. 150)</option>
-      <option value="100">Natsamrat (Rs. 100)</option>
-    </select>
     
     <ul class="showcase">
       <li>
@@ -17,79 +10,306 @@
         <small>Selected</small>
       </li>
       <li>
-        <div class="seat occupied"></div>
+        <div class="seat"></div>
         <small>Occupied</small>
       </li>    
     </ul>
+
+    <p class="text">
+      You have selected <span id="count">{{count}}</span> seats
+    </p>
     
-    <div class="container">
-      <div class="screen"></div>
+   
       
-      <div class="row">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
+        <div class="row">
+            <div class="seat" [ngClass]="{'occupied': totalSeats[0].blocked, 'selected': totalSeats[0].selected}" (click)="selectSeat(0)">1</div>
+            <div class="seat" [ngClass]="{'occupied': totalSeats[1].blocked, 'selected': totalSeats[1].selected}" (click)="selectSeat(1)">2</div>
+            <div class="seat" [ngClass]="{'occupied': totalSeats[2].blocked, 'selected': totalSeats[2].selected}" (click)="selectSeat(2)">3</div>
+            <div class="seat" [ngClass]="{'occupied': totalSeats[3].blocked, 'selected': totalSeats[3].selected}" (click)="selectSeat(3)">4</div>
+            <div class="seat" [ngClass]="{'occupied': totalSeats[4].blocked, 'selected': totalSeats[4].selected}" (click)="selectSeat(4)">5</div>
+            <div class="seat" [ngClass]="{'occupied': totalSeats[5].blocked, 'selected': totalSeats[5].selected}" (click)="selectSeat(5)">6</div>
+            <div class="seat" [ngClass]="{'occupied': totalSeats[6].blocked, 'selected': totalSeats[6].selected}" (click)="selectSeat(6)">7</div>
+            <div class="seat" [ngClass]="{'occupied': totalSeats[7].blocked, 'selected': totalSeats[7].selected}" (click)="selectSeat(7)">8</div>
+            <div class="seat" [ngClass]="{'occupied': totalSeats[8].blocked, 'selected': totalSeats[8].selected}" (click)="selectSeat(8)">9</div>
+            <div class="seat" [ngClass]="{'occupied': totalSeats[9].blocked, 'selected': totalSeats[9].selected}" (click)="selectSeat(9)">10</div>
+            <div class="seat" [ngClass]="{'occupied': totalSeats[10].blocked, 'selected': totalSeats[10].selected}" (click)="selectSeat(10)">11</div>
+            <div class="seat" [ngClass]="{'occupied': totalSeats[11].blocked, 'selected': totalSeats[11].selected}" (click)="selectSeat(11)">12</div>
+            <div class="seat" [ngClass]="{'occupied': totalSeats[12].blocked, 'selected': totalSeats[12].selected}" (click)="selectSeat(12)">13</div>
+            <div class="seat" [ngClass]="{'occupied': totalSeats[13].blocked, 'selected': totalSeats[13].selected}" (click)="selectSeat(13)">14</div>
+            <div class="seat" [ngClass]="{'occupied': totalSeats[14].blocked, 'selected': totalSeats[14].selected}" (click)="selectSeat(14)">15</div>
+            <div class="seat" [ngClass]="{'occupied': totalSeats[15].blocked, 'selected': totalSeats[15].selected}" (click)="selectSeat(15)">16</div>
+            <div class="seat" [ngClass]="{'occupied': totalSeats[16].blocked, 'selected': totalSeats[16].selected}" (click)="selectSeat(16)">17</div>
+            <div class="seat" [ngClass]="{'occupied': totalSeats[17].blocked, 'selected': totalSeats[17].selected}" (click)="selectSeat(17)">18</div>
         </div>
         <div class="row">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat occupied"></div>
-          <div class="seat occupied"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[18].blocked, 'selected': totalSeats[18].selected}" (click)="selectSeat(18)">1</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[19].blocked, 'selected': totalSeats[19].selected}" (click)="selectSeat(19)">2</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[20].blocked, 'selected': totalSeats[20].selected}" (click)="selectSeat(20)">3</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[21].blocked, 'selected': totalSeats[21].selected}" (click)="selectSeat(21)">4</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[22].blocked, 'selected': totalSeats[22].selected}" (click)="selectSeat(22)">5</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[23].blocked, 'selected': totalSeats[23].selected}" (click)="selectSeat(23)">6</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[24].blocked, 'selected': totalSeats[24].selected}" (click)="selectSeat(24)">7</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[25].blocked, 'selected': totalSeats[25].selected}" (click)="selectSeat(25)">8</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[26].blocked, 'selected': totalSeats[26].selected}" (click)="selectSeat(26)">9</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[27].blocked, 'selected': totalSeats[27].selected}" (click)="selectSeat(27)">10</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[28].blocked, 'selected': totalSeats[28].selected}" (click)="selectSeat(28)">11</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[29].blocked, 'selected': totalSeats[29].selected}" (click)="selectSeat(29)">12</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[30].blocked, 'selected': totalSeats[30].selected}" (click)="selectSeat(30)">13</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[31].blocked, 'selected': totalSeats[31].selected}" (click)="selectSeat(31)">14</div>
+         
         </div>
+
+        <div class="seperator"></div>
+
         <div class="row">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat occupied"></div>
-          <div class="seat occupied"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[32].blocked, 'selected': totalSeats[32].selected}" (click)="selectSeat(32)">1</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[33].blocked, 'selected': totalSeats[33].selected}" (click)="selectSeat(33)">2</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[34].blocked, 'selected': totalSeats[34].selected}" (click)="selectSeat(34)">3</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[35].blocked, 'selected': totalSeats[35].selected}" (click)="selectSeat(35)">4</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[36].blocked, 'selected': totalSeats[36].selected}" (click)="selectSeat(36)">5</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[37].blocked, 'selected': totalSeats[37].selected}" (click)="selectSeat(37)">6</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[38].blocked, 'selected': totalSeats[38].selected}" (click)="selectSeat(38)">7</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[39].blocked, 'selected': totalSeats[39].selected}" (click)="selectSeat(39)">8</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[40].blocked, 'selected': totalSeats[40].selected}" (click)="selectSeat(40)">9</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[41].blocked, 'selected': totalSeats[41].selected}" (click)="selectSeat(41)">10</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[42].blocked, 'selected': totalSeats[42].selected}" (click)="selectSeat(42)">11</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[43].blocked, 'selected': totalSeats[43].selected}" (click)="selectSeat(43)">12</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[44].blocked, 'selected': totalSeats[44].selected}" (click)="selectSeat(44)">13</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[45].blocked, 'selected': totalSeats[45].selected}" (click)="selectSeat(45)">14</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[46].blocked, 'selected': totalSeats[46].selected}" (click)="selectSeat(46)">15</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[47].blocked, 'selected': totalSeats[47].selected}" (click)="selectSeat(47)">16</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[48].blocked, 'selected': totalSeats[48].selected}" (click)="selectSeat(48)">17</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[49].blocked, 'selected': totalSeats[49].selected}" (click)="selectSeat(49)">18</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[50].blocked, 'selected': totalSeats[50].selected}" (click)="selectSeat(50)">19</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[51].blocked, 'selected': totalSeats[51].selected}" (click)="selectSeat(51)">20</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[52].blocked, 'selected': totalSeats[52].selected}" (click)="selectSeat(52)">21</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[53].blocked, 'selected': totalSeats[53].selected}" (click)="selectSeat(53)">22</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[54].blocked, 'selected': totalSeats[54].selected}" (click)="selectSeat(54)">23</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[55].blocked, 'selected': totalSeats[55].selected}" (click)="selectSeat(55)">24</div>
         </div>
+
         <div class="row">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[56].blocked, 'selected': totalSeats[56].selected}" (click)="selectSeat(56)">1</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[57].blocked, 'selected': totalSeats[57].selected}" (click)="selectSeat(57)">2</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[58].blocked, 'selected': totalSeats[58].selected}" (click)="selectSeat(58)">3</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[59].blocked, 'selected': totalSeats[59].selected}" (click)="selectSeat(59)">4</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[60].blocked, 'selected': totalSeats[60].selected}" (click)="selectSeat(60)">5</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[61].blocked, 'selected': totalSeats[61].selected}" (click)="selectSeat(61)">6</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[62].blocked, 'selected': totalSeats[62].selected}" (click)="selectSeat(62)">7</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[63].blocked, 'selected': totalSeats[63].selected}" (click)="selectSeat(63)">8</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[64].blocked, 'selected': totalSeats[64].selected}" (click)="selectSeat(64)">9</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[65].blocked, 'selected': totalSeats[65].selected}" (click)="selectSeat(65)">10</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[66].blocked, 'selected': totalSeats[66].selected}" (click)="selectSeat(66)">11</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[67].blocked, 'selected': totalSeats[67].selected}" (click)="selectSeat(67)">12</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[68].blocked, 'selected': totalSeats[68].selected}" (click)="selectSeat(68)">13</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[69].blocked, 'selected': totalSeats[69].selected}" (click)="selectSeat(69)">14</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[70].blocked, 'selected': totalSeats[70].selected}" (click)="selectSeat(70)">15</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[71].blocked, 'selected': totalSeats[71].selected}" (click)="selectSeat(71)">16</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[72].blocked, 'selected': totalSeats[72].selected}" (click)="selectSeat(72)">17</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[73].blocked, 'selected': totalSeats[73].selected}" (click)="selectSeat(73)">18</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[74].blocked, 'selected': totalSeats[74].selected}" (click)="selectSeat(74)">19</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[75].blocked, 'selected': totalSeats[75].selected}" (click)="selectSeat(75)">20</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[76].blocked, 'selected': totalSeats[76].selected}" (click)="selectSeat(76)">21</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[77].blocked, 'selected': totalSeats[77].selected}" (click)="selectSeat(77)">22</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[78].blocked, 'selected': totalSeats[78].selected}" (click)="selectSeat(78)">23</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[79].blocked, 'selected': totalSeats[79].selected}" (click)="selectSeat(79)">24</div>
         </div>
+
+ 
+        
+
+    <div class="row">
+          <div class="seat" [ngClass]="{'occupied': totalSeats[80].blocked, 'selected': totalSeats[80].selected}" (click)="selectSeat(80)">1</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[81].blocked, 'selected': totalSeats[81].selected}" (click)="selectSeat(81)">2</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[82].blocked, 'selected': totalSeats[82].selected}" (click)="selectSeat(82)">3</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[83].blocked, 'selected': totalSeats[83].selected}" (click)="selectSeat(83)">4</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[84].blocked, 'selected': totalSeats[84].selected}" (click)="selectSeat(84)">5</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[85].blocked, 'selected': totalSeats[85].selected}" (click)="selectSeat(85)">6</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[86].blocked, 'selected': totalSeats[86].selected}" (click)="selectSeat(86)">7</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[87].blocked, 'selected': totalSeats[87].selected}" (click)="selectSeat(87)">8</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[88].blocked, 'selected': totalSeats[88].selected}" (click)="selectSeat(88)">9</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[89].blocked, 'selected': totalSeats[89].selected}" (click)="selectSeat(89)">10</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[90].blocked, 'selected': totalSeats[90].selected}" (click)="selectSeat(90)">11</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[91].blocked, 'selected': totalSeats[91].selected}" (click)="selectSeat(91)">12</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[92].blocked, 'selected': totalSeats[92].selected}" (click)="selectSeat(92)">13</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[93].blocked, 'selected': totalSeats[93].selected}" (click)="selectSeat(93)">14</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[94].blocked, 'selected': totalSeats[94].selected}" (click)="selectSeat(94)">15</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[95].blocked, 'selected': totalSeats[95].selected}" (click)="selectSeat(95)">16</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[96].blocked, 'selected': totalSeats[96].selected}" (click)="selectSeat(96)">17</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[97].blocked, 'selected': totalSeats[97].selected}" (click)="selectSeat(97)">18</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[98].blocked, 'selected': totalSeats[98].selected}" (click)="selectSeat(98)">19</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[99].blocked, 'selected': totalSeats[99].selected}" (click)="selectSeat(99)">20</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[100].blocked, 'selected': totalSeats[100].selected}" (click)="selectSeat(100)">21</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[101].blocked, 'selected': totalSeats[101].selected}" (click)="selectSeat(101)">22</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[102].blocked, 'selected': totalSeats[102].selected}" (click)="selectSeat(102)">23</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[103].blocked, 'selected': totalSeats[103].selected}" (click)="selectSeat(103)">24</div>
+        </div>
+
+
         <div class="row">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat occupied"></div>
-          <div class="seat occupied"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[104].blocked, 'selected': totalSeats[104].selected}" (click)="selectSeat(104)">1</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[105].blocked, 'selected': totalSeats[105].selected}" (click)="selectSeat(105)">2</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[106].blocked, 'selected': totalSeats[106].selected}" (click)="selectSeat(106)">3</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[107].blocked, 'selected': totalSeats[107].selected}" (click)="selectSeat(107)">4</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[108].blocked, 'selected': totalSeats[108].selected}" (click)="selectSeat(108)">5</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[109].blocked, 'selected': totalSeats[109].selected}" (click)="selectSeat(109)">6</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[110].blocked, 'selected': totalSeats[110].selected}" (click)="selectSeat(110)">7</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[111].blocked, 'selected': totalSeats[111].selected}" (click)="selectSeat(111)">8</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[112].blocked, 'selected': totalSeats[112].selected}" (click)="selectSeat(112)">9</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[113].blocked, 'selected': totalSeats[113].selected}" (click)="selectSeat(113)">10</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[114].blocked, 'selected': totalSeats[114].selected}" (click)="selectSeat(114)">11</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[115].blocked, 'selected': totalSeats[115].selected}" (click)="selectSeat(115)">12</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[116].blocked, 'selected': totalSeats[116].selected}" (click)="selectSeat(116)">13</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[117].blocked, 'selected': totalSeats[117].selected}" (click)="selectSeat(117)">14</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[118].blocked, 'selected': totalSeats[118].selected}" (click)="selectSeat(118)">15</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[119].blocked, 'selected': totalSeats[119].selected}" (click)="selectSeat(119)">16</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[120].blocked, 'selected': totalSeats[120].selected}" (click)="selectSeat(120)">17</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[121].blocked, 'selected': totalSeats[121].selected}" (click)="selectSeat(121)">18</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[122].blocked, 'selected': totalSeats[122].selected}" (click)="selectSeat(122)">19</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[123].blocked, 'selected': totalSeats[123].selected}" (click)="selectSeat(123)">20</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[124].blocked, 'selected': totalSeats[124].selected}" (click)="selectSeat(124)">21</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[125].blocked, 'selected': totalSeats[125].selected}" (click)="selectSeat(125)">22</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[126].blocked, 'selected': totalSeats[126].selected}" (click)="selectSeat(126)">23</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[127].blocked, 'selected': totalSeats[127].selected}" (click)="selectSeat(127)">24</div>
         </div>
+
+
         <div class="row">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat occupied"></div>
-          <div class="seat occupied"></div>
-          <div class="seat occupied"></div>
-          <div class="seat"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[128].blocked, 'selected': totalSeats[128].selected}" (click)="selectSeat(128)">1</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[129].blocked, 'selected': totalSeats[129].selected}" (click)="selectSeat(129)">2</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[130].blocked, 'selected': totalSeats[130].selected}" (click)="selectSeat(130)">3</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[131].blocked, 'selected': totalSeats[131].selected}" (click)="selectSeat(131)">4</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[132].blocked, 'selected': totalSeats[132].selected}" (click)="selectSeat(132)">5</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[133].blocked, 'selected': totalSeats[133].selected}" (click)="selectSeat(133)">6</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[134].blocked, 'selected': totalSeats[134].selected}" (click)="selectSeat(134)">7</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[135].blocked, 'selected': totalSeats[135].selected}" (click)="selectSeat(135)">8</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[136].blocked, 'selected': totalSeats[136].selected}" (click)="selectSeat(136)">9</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[137].blocked, 'selected': totalSeats[137].selected}" (click)="selectSeat(137)">10</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[138].blocked, 'selected': totalSeats[138].selected}" (click)="selectSeat(138)">11</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[139].blocked, 'selected': totalSeats[139].selected}" (click)="selectSeat(139)">12</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[140].blocked, 'selected': totalSeats[140].selected}" (click)="selectSeat(140)">13</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[141].blocked, 'selected': totalSeats[141].selected}" (click)="selectSeat(141)">14</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[142].blocked, 'selected': totalSeats[142].selected}" (click)="selectSeat(142)">15</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[143].blocked, 'selected': totalSeats[143].selected}" (click)="selectSeat(143)">16</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[144].blocked, 'selected': totalSeats[144].selected}" (click)="selectSeat(144)">17</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[145].blocked, 'selected': totalSeats[145].selected}" (click)="selectSeat(145)">18</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[146].blocked, 'selected': totalSeats[146].selected}" (click)="selectSeat(146)">19</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[147].blocked, 'selected': totalSeats[147].selected}" (click)="selectSeat(147)">20</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[148].blocked, 'selected': totalSeats[148].selected}" (click)="selectSeat(148)">21</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[149].blocked, 'selected': totalSeats[149].selected}" (click)="selectSeat(149)">22</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[150].blocked, 'selected': totalSeats[150].selected}" (click)="selectSeat(150)">23</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[151].blocked, 'selected': totalSeats[151].selected}" (click)="selectSeat(151)">24</div>
         </div>
+
+
+        <div class="row">
+          <div class="seat" [ngClass]="{'occupied': totalSeats[152].blocked, 'selected': totalSeats[152].selected}" (click)="selectSeat(152)">1</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[153].blocked, 'selected': totalSeats[153].selected}" (click)="selectSeat(153)">2</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[154].blocked, 'selected': totalSeats[154].selected}" (click)="selectSeat(154)">3</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[155].blocked, 'selected': totalSeats[155].selected}" (click)="selectSeat(155)">4</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[156].blocked, 'selected': totalSeats[156].selected}" (click)="selectSeat(156)">5</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[157].blocked, 'selected': totalSeats[157].selected}" (click)="selectSeat(157)">6</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[158].blocked, 'selected': totalSeats[158].selected}" (click)="selectSeat(158)">7</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[159].blocked, 'selected': totalSeats[159].selected}" (click)="selectSeat(159)">8</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[160].blocked, 'selected': totalSeats[160].selected}" (click)="selectSeat(160)">9</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[161].blocked, 'selected': totalSeats[161].selected}" (click)="selectSeat(161)">10</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[162].blocked, 'selected': totalSeats[162].selected}" (click)="selectSeat(162)">11</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[163].blocked, 'selected': totalSeats[163].selected}" (click)="selectSeat(163)">12</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[164].blocked, 'selected': totalSeats[164].selected}" (click)="selectSeat(164)">13</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[165].blocked, 'selected': totalSeats[165].selected}" (click)="selectSeat(165)">14</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[166].blocked, 'selected': totalSeats[166].selected}" (click)="selectSeat(166)">15</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[167].blocked, 'selected': totalSeats[167].selected}" (click)="selectSeat(167)">16</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[168].blocked, 'selected': totalSeats[168].selected}" (click)="selectSeat(168)">17</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[169].blocked, 'selected': totalSeats[169].selected}" (click)="selectSeat(169)">18</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[170].blocked, 'selected': totalSeats[170].selected}" (click)="selectSeat(170)">19</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[171].blocked, 'selected': totalSeats[171].selected}" (click)="selectSeat(171)">20</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[172].blocked, 'selected': totalSeats[172].selected}" (click)="selectSeat(172)">21</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[173].blocked, 'selected': totalSeats[173].selected}" (click)="selectSeat(173)">22</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[174].blocked, 'selected': totalSeats[174].selected}" (click)="selectSeat(174)">23</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[175].blocked, 'selected': totalSeats[175].selected}" (click)="selectSeat(175)">24</div>
+        </div>
+
+        
+        <div class="row">
+          <div class="seat" [ngClass]="{'occupied': totalSeats[176].blocked, 'selected': totalSeats[176].selected}" (click)="selectSeat(176)">1</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[177].blocked, 'selected': totalSeats[177].selected}" (click)="selectSeat(177)">2</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[178].blocked, 'selected': totalSeats[178].selected}" (click)="selectSeat(178)">3</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[179].blocked, 'selected': totalSeats[179].selected}" (click)="selectSeat(179)">4</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[180].blocked, 'selected': totalSeats[180].selected}" (click)="selectSeat(180)">5</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[181].blocked, 'selected': totalSeats[181].selected}" (click)="selectSeat(181)">6</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[182].blocked, 'selected': totalSeats[182].selected}" (click)="selectSeat(182)">7</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[183].blocked, 'selected': totalSeats[183].selected}" (click)="selectSeat(183)">8</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[184].blocked, 'selected': totalSeats[184].selected}" (click)="selectSeat(184)">9</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[185].blocked, 'selected': totalSeats[185].selected}" (click)="selectSeat(185)">10</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[186].blocked, 'selected': totalSeats[186].selected}" (click)="selectSeat(186)">11</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[187].blocked, 'selected': totalSeats[187].selected}" (click)="selectSeat(187)">12</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[188].blocked, 'selected': totalSeats[188].selected}" (click)="selectSeat(188)">13</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[189].blocked, 'selected': totalSeats[189].selected}" (click)="selectSeat(189)">14</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[190].blocked, 'selected': totalSeats[190].selected}" (click)="selectSeat(190)">15</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[191].blocked, 'selected': totalSeats[191].selected}" (click)="selectSeat(191)">16</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[192].blocked, 'selected': totalSeats[192].selected}" (click)="selectSeat(192)">17</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[193].blocked, 'selected': totalSeats[193].selected}" (click)="selectSeat(193)">18</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[194].blocked, 'selected': totalSeats[194].selected}" (click)="selectSeat(194)">19</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[195].blocked, 'selected': totalSeats[195].selected}" (click)="selectSeat(195)">20</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[196].blocked, 'selected': totalSeats[196].selected}" (click)="selectSeat(196)">21</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[197].blocked, 'selected': totalSeats[197].selected}" (click)="selectSeat(197)">22</div>
+        </div>
+
+        <div class="row" style="margin-left: 15px;">
+          
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[198].blocked, 'selected': totalSeats[198].selected}" (click)="selectSeat(198)">1</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[199].blocked, 'selected': totalSeats[199].selected}" (click)="selectSeat(199)">2</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[200].blocked, 'selected': totalSeats[200].selected}" (click)="selectSeat(200)">3</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[201].blocked, 'selected': totalSeats[201].selected}" (click)="selectSeat(201)">4</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[202].blocked, 'selected': totalSeats[202].selected}" (click)="selectSeat(202)">5</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[203].blocked, 'selected': totalSeats[203].selected}" (click)="selectSeat(203)">6</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[204].blocked, 'selected': totalSeats[204].selected}" (click)="selectSeat(204)">7</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[205].blocked, 'selected': totalSeats[205].selected}" (click)="selectSeat(205)">8</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[206].blocked, 'selected': totalSeats[206].selected}" (click)="selectSeat(206)">9</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[207].blocked, 'selected': totalSeats[207].selected}" (click)="selectSeat(207)">10</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[208].blocked, 'selected': totalSeats[208].selected}" (click)="selectSeat(208)">11</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[209].blocked, 'selected': totalSeats[209].selected}" (click)="selectSeat(209)">12</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[210].blocked, 'selected': totalSeats[210].selected}" (click)="selectSeat(210)">13</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[211].blocked, 'selected': totalSeats[211].selected}" (click)="selectSeat(211)">14</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[212].blocked, 'selected': totalSeats[212].selected}" (click)="selectSeat(212)">15</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[213].blocked, 'selected': totalSeats[213].selected}" (click)="selectSeat(213)">16</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[214].blocked, 'selected': totalSeats[214].selected}" (click)="selectSeat(214)">17</div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[215].blocked, 'selected': totalSeats[215].selected}" (click)="selectSeat(215)">18</div>
+          <div class="seat occupied hidden"></div>
+          <div class="seat" [ngClass]="{'occupied': totalSeats[216].blocked, 'selected': totalSeats[216].selected}" (click)="selectSeat(216)">19</div>
+          
+        </div>
+
+        <div class="container">
+          <div class="screen"></div>
+          Screen 
+        </div>
+
       
-      <p class="text">
-        You have selected <span id="count">0</span> seats for the total price of Rs. <span id="total">0</span>
-      </p>
-    </div>
   </div>
+
+  <div class="example-button-row">    <button mat-raised-button color="primary" style="width: 100%;height: 3rem;margin-bottom: 3rem;">Book Seats</button></div>
   
-  <div class="credits"><a href="http://www.aniket.co" target="_blank">aniket.co</a></div>
