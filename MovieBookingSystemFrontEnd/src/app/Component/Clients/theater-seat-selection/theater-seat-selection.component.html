@@ -3,17 +3,22 @@
     <ul class="showcase">
       <li>
         <div class="seat"></div>
-        <small>N/A</small>
+        <small>Available</small>
       </li>
       <li>
         <div class="seat selected"></div>
         <small>Selected</small>
       </li>
       <li>
-        <div class="seat"></div>
+        <div class="seat occupied"></div>
         <small>Occupied</small>
       </li>    
     </ul>
+
+    <div *ngIf="showMovieName == true">
+      <span>Movie Name: </span> {{movie.movieName}}
+
+    </div>
 
     <p class="text">
       You have selected <span id="count">{{count}}</span> seats
@@ -311,5 +316,5 @@
       
   </div>
 
-  <div class="example-button-row">    <button mat-raised-button color="primary" style="width: 100%;height: 3rem;margin-bottom: 3rem;">Book Seats</button></div>
+  <div class="example-button-row">    <button mat-raised-button color="primary" (click)="bookSeats()" style="width: 100%;height: 3rem;margin-bottom: 3rem;">Book Seats</button></div>
   

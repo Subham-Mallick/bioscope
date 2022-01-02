@@ -18,7 +18,7 @@ body {
 * {
 	font-family: "Montserrat", sans-serif !important;
   box-sizing: border-box;
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 .movie-container {
@@ -29,6 +29,10 @@ body {
   flex-direction: column
 }
 
+span { 
+  font-size: large;
+  font-weight: 900;
+}
 .movie-container select {
   appearance: menulist-button;
   -moz-appearance: none;
@@ -53,7 +57,7 @@ body {
 }
 
 .seat {
-  background-color: #444451;
+  background-color: #96cace;
   height: 20px;
   width: 20px;
   margin: 5px;
@@ -68,12 +72,13 @@ body {
 .selected {
   background-color: #0081cb;
 }
+
 .first {
   margin-left: 10px;
 }
 
 .occupied {
-  background-color: rgb(131, 166, 201);
+  background-color: rgb(0, 0, 0);
 }
 
 .hidden{

@@ -9,6 +9,7 @@ export const environment = {
   user_client: 'client/',
   shows: 'shows/',
   movies: 'movies/',
+  bookings: 'bookings/',
   AudiId: '61b9fbe08fd5e57a08e19d79'
 };
 
