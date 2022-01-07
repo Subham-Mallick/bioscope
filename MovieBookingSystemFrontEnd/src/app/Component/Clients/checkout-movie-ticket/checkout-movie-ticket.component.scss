@@ -44,7 +44,7 @@ a {
 
 .card > .content .date {
   opacity: 0.8;
-  font-size: 0.8rem;
+  font-size: 1.5rem;
   margin-top: -0.5rem;
   margin-bottom: 0.5rem;
 }
@@ -55,7 +55,7 @@ a {
 
 .card:hover > .thumbnail {
   transform: translateY(-2rem);
-  box-shadow: 0 20px 40px -5px rgba(192, 2, 106, 0.3);
+  box-shadow: 0 20px 40px -5px rgba(14, 13, 13, 0.3);
 }
 
 .other{

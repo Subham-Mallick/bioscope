@@ -19,6 +19,7 @@ export class TheaterSeatSelectionComponent implements OnInit {
 
   movie: any = {}
   showMovieName: boolean = false;
+  show: any = {}
   totalSeats : any [] = []
   availableSeats : any [] = []
   selectedSeats: any [] = []
@@ -49,7 +50,8 @@ export class TheaterSeatSelectionComponent implements OnInit {
 
     this.blockedSeatService.getShowDetails(this.BookingDetails.showId).subscribe((response : any) =>{
       this.availableSeats = response.availableSeats
-      console.log(response)
+      console.log("Show Details -->",response)
+      this.show = response;
       this.movie = response.movieDetails;
       this.showMovieName = true
       this.setBlockedSeats()
@@ -82,6 +84,7 @@ export class TheaterSeatSelectionComponent implements OnInit {
         })
       }
     }
+
 
   }
 
@@ -116,34 +119,21 @@ export class TheaterSeatSelectionComponent implements OnInit {
   }
 
   checkConflict() {
-    var alreadyBooked = false;
-    console.log(this.selectedSeats)
-    console.log(this.availableSeats)
-    for(let i = 0; i < this.selectedSeats.length; i++) {
-      for(let j = 0; j < this.availableSeats.length; j++) {
-        // console.log(this.selectedSeats[i].row ,this.selectedSeats[i].column , this.availableSeats[j].row , this.availableSeats[j].column )
-        if(this.selectedSeats[i].row === this.availableSeats[j].row && this.selectedSeats[i].column === this.availableSeats[j].column) {
-          continue;
-        }
-        alreadyBooked = true;
-        break;
-      }
-      if(alreadyBooked == true) break;
-    }
 
-    if(alreadyBooked === true) {
-      this.fetchBookingDetails();
-      this.openSnackBar("Seats Already Booked", "Failed")
-      return;
-    }
-
-    this.bookingService.saveBookingDetails(this.BookingDetails.showId, this.BookingDetails).subscribe((response => {
+    var booking = this.BookingDetails;
+    delete booking.seats;
+    
+    booking.bookingId = ''
+    console.log(booking)
+    this.bookingService.saveBookingDetails(this.BookingDetails.showId, booking).subscribe((response => {
       this.openSnackBar("Booking ", "Successful")
-      this.router.navigateByUrl("/client/ticket")
+      this.BookingDetails.show = this.show;
+      this.router.navigateByUrl("/client/ticket", { state: this.BookingDetails})
 
     }), (error) => {
       console.log(error)
       this.openSnackBar("Booking", "Failed")
+      this.fetchBookingDetails()
     })
 
   }
@@ -153,31 +143,11 @@ export class TheaterSeatSelectionComponent implements OnInit {
   addSelectedSeats() {
     this.selectedSeats = this.totalSeats.filter((seat: any) => seat.selected === true).map((seat: any) => {
       delete seat.selected;
+      seat.blocked = true;
       return seat;
     });
 
-    // this.showBookingDetails();
-    // var alreadyBooked = false;
-
-    // for(let i = 0; i < this.selectedSeats.length; i++) {
-    //   for(let j = 0; j < this.availableSeats.length; j++) {
-    //     if(this.selectedSeats[i].row == this.availableSeats[j].row && this.selectedSeats[i].column == this.availableSeats[j].column) {
-    //       alreadyBooked = true;
-    //     }
-    //   }
-    //   if(alreadyBooked == true) break;
-    // }
-
-    // if(alreadyBooked === true) {
-    //   this.fetchBookingDetails();
-    //   return;
-    // }
-
-
-    // this.BookingDetails.bookedSeats = this.selectedSeats;
-   
-    // console.log(this.BookingDetails)
-    // this.bookingService.saveBookingDetails(this.BookingDetails.showId, this.BookingDetails)
+    
     
     
   }

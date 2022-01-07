@@ -53,7 +53,7 @@ public class Util {
             }
 
             // check if a booking is already done for given ArmyNumber
-            final List<Booking> bookings = show.getBookings();
+            final List<Booking> bookings = show.getBookings() == null ? new ArrayList<>() : show.getBookings();
             for(Booking booking: bookings){
                 if(Objects.equals(booking.getBookedUserArmyNumber(), newBooking.getBookedUserArmyNumber())){
                     return new ResponseEntity<>(null, HttpStatus.CONFLICT);
