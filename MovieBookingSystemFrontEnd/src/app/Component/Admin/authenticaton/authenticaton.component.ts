@@ -20,6 +20,8 @@ export class AuthenticatonComponent implements OnInit {
   }
 
   validateLogin() {
+    if(this.username.pristine || this.password.pristine) return;
+    
     this.authService.authenticate(this.username.value, this.password.value).subscribe((res:any) => {
       localStorage.setItem("jwttoken", res.jwt);
       localStorage.setItem("timestamp", String(new Date()));
