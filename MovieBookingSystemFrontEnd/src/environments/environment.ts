@@ -10,7 +10,8 @@ export const environment = {
   shows: 'shows/',
   movies: 'movies/',
   bookings: 'bookings/',
-  AudiId: '61b9fbe08fd5e57a08e19d79'
+  AudiId: '61b9fbe08fd5e57a08e19d79',
+  authentication: 'authenticate/'
 };
 
 

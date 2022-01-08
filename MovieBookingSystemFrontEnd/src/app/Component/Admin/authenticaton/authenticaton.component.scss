@@ -1,0 +1,26 @@
+.container{
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 14rem;
+}
+.example-card {
+    width: 500px;
+  }
+
+  .mat-card-actions {
+      display: flex;
+      justify-content:  center;
+  }
+  .mat-card-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mat-raised-button {
+      width: 50%;
+  }

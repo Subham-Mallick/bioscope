@@ -7,6 +7,9 @@
         <a  mat-button  [routerLink]="'/admin/movies'"> Movies </a>
        
         <a mat-button [routerLink]="'/admin/showdetails'"> Show Details </a>
+
+        <a mat-button (click)="signOut()">Client Page </a>
+        <a mat-button [routerLink]="'/'">Client Page </a>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>

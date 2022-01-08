@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { AuthenticationService } from './service/authentication.service';
 
 @Component({
   selector: 'app-authenticaton',
@@ -6,10 +10,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./authenticaton.component.scss']
 })
 export class AuthenticatonComponent implements OnInit {
+  hide = true;
+  username = new FormControl('')
+  password = new FormControl('')
 
-  constructor() { }
+  constructor(private router: Router, private authService: AuthenticationService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+  }
+
+  validateLogin() {
+    this.authService.authenticate(this.username.value, this.password.value).subscribe((res:any) => {
+      localStorage.setItem("jwttoken", res.jwt);
+      localStorage.setItem("timestamp", String(new Date()));
+      this.authService.setAuthState(true);
+      this.router.navigateByUrl("admin/movies");
+    }, (error) => {
+      this.authService.setAuthState(false);
+      this.openSnackBar()
+    })
+    
+  }
+
+  openSnackBar() {
+    this._snackBar.open("Unsuccessfull Login Attempt" , "Failed", {
+      duration: 3000,
+    });
   }
 
 }

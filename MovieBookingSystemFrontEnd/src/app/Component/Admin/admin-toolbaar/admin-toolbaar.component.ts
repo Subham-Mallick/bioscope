@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-toolbaar',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminToolbaarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  signOut() {
+    localStorage.removeItem('jwttoken')
+    localStorage.removeItem('timestamp')
+    this.router.navigateByUrl("/");
+  }
 }

@@ -40,11 +40,12 @@ import { ShowDetailsComponent } from './Component/Admin/show-details/show-detail
 import { AddEditShowComponent } from './Component/Admin/show-details/Dialog/add-edit-show/add-edit-show.component';
 import { ShowGuestListComponent } from './Component/Admin/show-guest-list/show-guest-list.component';
 import { MatTableModule } from '@angular/material/table';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { AdminToolbaarComponent } from './Component/Admin/admin-toolbaar/admin-toolbaar.component';
 import { ShowDetailsClientComponent } from './Component/Clients/show-details-client/show-details-client.component';
+import { AuthInterceptor } from './Component/Auth/Interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,9 @@ import { ShowDetailsClientComponent } from './Component/Clients/show-details-cli
     MatDatepickerModule,
     MatFormFieldModule
   ],
-  providers: [MatFormFieldModule,MatDatepickerModule],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 
