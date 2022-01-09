@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -13,9 +13,11 @@ export class AuthInterceptor implements HttpInterceptor {
         console.log("REquest Login -> ", req.url.includes("/authenticate"))
         if(token === undefined || token === null || req.url.includes("/client") || req.url.includes("/authenticate") ) return next.handle(req);
         
-        const reqClone = req.clone({
-            headers: req.headers.set('AuthorizationToken', `Bearer ${token}`)
-        });
-        return next.handle(reqClone);
+        // const reqClone = req.clone({
+        //     headers: req.headers.set('AuthorizationToken', `Bearer ${token}`)
+        // });
+        if(localStorage.getItem("authResult") === "true")   return next.handle(req);
+
+        return EMPTY;
     }
 }

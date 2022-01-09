@@ -133,6 +133,7 @@ export class TheaterSeatSelectionComponent implements OnInit {
     }), (error) => {
       console.log(error)
       this.openSnackBar("Booking", "Failed")
+      this.count = 0;
       this.fetchBookingDetails()
     })
 

@@ -12,12 +12,9 @@ export class AuthenticationService {
 
   authState = new BehaviorSubject<Boolean>(false);
 
-  authenticate(username: string, password: string) {
-    var loginPayload = {
-      "username": username,
-      "password": password
-    }
-    return this.http.post(environment.api_url + environment.authentication, loginPayload);
+  authenticate(username: string, password: string) : boolean {
+    
+    return username === 'user' && password === 'password';
   }
 
   setAuthState(state: Boolean) {

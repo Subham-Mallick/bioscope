@@ -14,8 +14,8 @@ export class AdminToolbaarComponent implements OnInit {
   }
 
   signOut() {
-    localStorage.removeItem('jwttoken')
-    localStorage.removeItem('timestamp')
+    console.log("Signout ->", localStorage.getItem("authResult"));
+    localStorage.setItem("authResult", "false");
     this.router.navigateByUrl("/");
   }
 }

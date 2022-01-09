@@ -13,6 +13,7 @@ export class ShowDetailsComponent implements OnInit {
 
   public shows: any[] = []
   private AllShows : any [] = []
+  public booking : any = {}
   constructor(public dialog: MatDialog, private showService: ShowService, private _snackBar: MatSnackBar) {
 
   }
@@ -90,6 +91,8 @@ export class ShowDetailsComponent implements OnInit {
   }
 
   fetchBookingDetails(show: any) {
+    console.log(show.bookings)
+    this.booking = show.bookings;
 
   }
   openSnackBar(message: string, action: string) {

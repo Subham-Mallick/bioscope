@@ -85,6 +85,8 @@ public class Util {
                 );
             }
 
+            bookings.add(booking);
+            show.setBookings(bookings);
             // save the show
             showService.save(show);
             return new ResponseEntity<>(booking,HttpStatus.CREATED);

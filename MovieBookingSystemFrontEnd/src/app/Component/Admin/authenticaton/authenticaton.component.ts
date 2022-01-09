@@ -22,15 +22,22 @@ export class AuthenticatonComponent implements OnInit {
   validateLogin() {
     if(this.username.pristine || this.password.pristine) return;
     
-    this.authService.authenticate(this.username.value, this.password.value).subscribe((res:any) => {
-      localStorage.setItem("jwttoken", res.jwt);
+    var authResult = this.authService.authenticate(this.username.value, this.password.value)
+    if(authResult === false) this.openSnackBar()
+    else {
+      localStorage.setItem("authResult", String(authResult));
       localStorage.setItem("timestamp", String(new Date()));
-      this.authService.setAuthState(true);
       this.router.navigateByUrl("admin/movies");
-    }, (error) => {
-      this.authService.setAuthState(false);
-      this.openSnackBar()
-    })
+    }
+    // .subscribe((res:any) => {
+    //   localStorage.setItem("jwttoken", res.jwt);
+    //   localStorage.setItem("timestamp", String(new Date()));
+    //   this.authService.setAuthState(true);
+    //   this.router.navigateByUrl("admin/movies");
+    // }, (error) => {
+    //   this.authService.setAuthState(false);
+    //   this.openSnackBar()
+    // })
     
   }
 
