@@ -1,6 +1,7 @@
 package com.army.bioscope.controller.admin;
 
 import com.army.bioscope.model.Booking;
+import com.army.bioscope.model.Show;
 import com.army.bioscope.service.BookingService;
 import com.army.bioscope.service.ShowService;
 import lombok.RequiredArgsConstructor;
@@ -72,9 +73,19 @@ public class BookingController {
         }
     }
 
-    @DeleteMapping("/bookings/{bookingId}")
-    public ResponseEntity<Booking> deleteBooking(@PathVariable String bookingId){
+    @DeleteMapping("/bookings/{bookingId}/{showId}")
+    public ResponseEntity<Booking> deleteBooking(@PathVariable String bookingId, @PathVariable String showId){
         try{
+            final Show show = showService.findById(showId).get();
+            if(!show.getBookingAvailable()){
+                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            }
+
+            // check if a booking is already done for given ArmyNumber
+            final List<Booking> bookings = show.getBookings() == null ? new ArrayList<>() : show.getBookings();
+            for(Booking booking: bookings){
+
+            }
             bookingService.deleteById(bookingId);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e){

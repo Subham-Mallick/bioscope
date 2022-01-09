@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  api_url: '/bioscope/',
+  api_url: 'http://localhost:8999/bioscope/',
   user_admin: 'admin/',
   user_client: 'client/',
   shows: 'shows/',
