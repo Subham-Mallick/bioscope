@@ -85,6 +85,8 @@ export class TheaterSeatSelectionComponent implements OnInit {
       }
     }
 
+    console.log(this.totalSeats)
+
 
   }
 

@@ -1,10 +1,12 @@
 package com.army.bioscope.controller.admin;
 
 import com.army.bioscope.model.Booking;
+import com.army.bioscope.model.Seat;
 import com.army.bioscope.model.Show;
 import com.army.bioscope.service.BookingService;
 import com.army.bioscope.service.ShowService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,7 @@ import static com.army.bioscope.controller.util.Util.getBookingResponseEntity;
 @RestController("AdminBookingController")
 @RequestMapping("/admin")
 @RequiredArgsConstructor
+@Slf4j
 @CrossOrigin
 public class BookingController {
     private final ShowService showService;
@@ -73,20 +76,41 @@ public class BookingController {
         }
     }
 
-    @DeleteMapping("/bookings/{bookingId}/{showId}")
+    @DeleteMapping("/{showId}/bookings/{bookingId}/")
     public ResponseEntity<Booking> deleteBooking(@PathVariable String bookingId, @PathVariable String showId){
         try{
-            final Show show = showService.findById(showId).get();
-            if(!show.getBookingAvailable()){
+            Show show = showService.findById(showId).get();
+            if(show == null) {
+                log.error("Show Id Not found and Booking deletion failed", showId);
                 return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             }
+            Booking removeBooking = null;
 
-            // check if a booking is already done for given ArmyNumber
-            final List<Booking> bookings = show.getBookings() == null ? new ArrayList<>() : show.getBookings();
-            for(Booking booking: bookings){
-
+            List<Booking> bookings = show.getBookings() == null ? new ArrayList<>() : show.getBookings();
+            int i = 0;
+            boolean bookingFound = false;
+            for(Booking booking: bookings) {
+                if(booking.getBookingId() == bookingId) {
+                    List<Seat> availableSeats = show.getAvailableSeats() == null ? new ArrayList<>() : show.getAvailableSeats();
+                    for (int j = 0; j < booking.getBookedSeats().size(); j++){
+                        availableSeats.add(booking.getBookedSeats().get(j));
+                    }
+                    show.setAvailableSeats(availableSeats);
+                    bookingFound = true;
+                    break;
+                }
+                i++;
             }
+            bookings.remove(i);
+            if(bookingFound == false) {
+                log.error("Booking Id Not found and Booking deletion failed", bookingId);
+                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            }
+            // check if a booking is already done for given ArmyNumber
+            show.setBookings(bookings);
+            showService.save(show);
             bookingService.deleteById(bookingId);
+
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
