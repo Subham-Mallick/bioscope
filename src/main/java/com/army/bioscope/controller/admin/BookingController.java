@@ -76,7 +76,7 @@ public class BookingController {
         }
     }
 
-    @DeleteMapping("/{showId}/bookings/{bookingId}/")
+    @DeleteMapping("/{showId}/bookings/{bookingId}")
     public ResponseEntity<Booking> deleteBooking(@PathVariable String bookingId, @PathVariable String showId){
         try{
             Show show = showService.findById(showId).get();
