@@ -31,16 +31,14 @@ export class TheaterSeatSelectionComponent implements OnInit {
   ngOnInit(): void {
     
    this.fetchBookingDetails();
-    
 
   }
 
   fetchBookingDetails( ) {
-
     this.bookingService.getBookingDetails().subscribe(response => {
       this.BookingDetails = response;
       this.dummyInitialisation()
-      console.log(response)
+      console.log("Booking Details", response);
       this.showBookingDetails()
     })
   }
