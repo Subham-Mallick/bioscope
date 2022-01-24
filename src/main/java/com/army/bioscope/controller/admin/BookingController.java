@@ -79,6 +79,7 @@ public class BookingController {
     @DeleteMapping("/{showId}/bookings/{bookingId}")
     public ResponseEntity<Booking> deleteBooking(@PathVariable String bookingId, @PathVariable String showId){
         try{
+            bookingId = bookingId == null ? "" : bookingId;
             Show show = showService.findById(showId).get();
             if(show == null) {
                 log.error("Show Id Not found and Booking deletion failed", showId);
@@ -87,10 +88,10 @@ public class BookingController {
             Booking removeBooking = null;
 
             List<Booking> bookings = show.getBookings() == null ? new ArrayList<>() : show.getBookings();
-            int i = 0;
+            int counterBooking = 0;
             boolean bookingFound = false;
             for(Booking booking: bookings) {
-                if(booking.getBookingId() == bookingId) {
+                if(booking.getBookingId().equalsIgnoreCase(bookingId) == true) {
                     List<Seat> availableSeats = show.getAvailableSeats() == null ? new ArrayList<>() : show.getAvailableSeats();
                     for (int j = 0; j < booking.getBookedSeats().size(); j++){
                         availableSeats.add(booking.getBookedSeats().get(j));
@@ -99,13 +100,15 @@ public class BookingController {
                     bookingFound = true;
                     break;
                 }
-                i++;
+                counterBooking++;
             }
-            bookings.remove(i);
+
             if(bookingFound == false) {
                 log.error("Booking Id Not found and Booking deletion failed", bookingId);
                 return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             }
+
+            bookings.remove(counterBooking);
             // check if a booking is already done for given ArmyNumber
             show.setBookings(bookings);
             showService.save(show);
